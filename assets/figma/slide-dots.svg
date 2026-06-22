@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="xMidYMid meet" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 50 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="slide-dots">
+<circle id="dot-1-active" cx="5" cy="5" r="5" fill="var(--fill-0, white)"/>
+<circle id="dot-2" cx="26" cy="5" r="4" fill="var(--fill-0, white)" fill-opacity="0.4"/>
+<circle id="dot-3" cx="46" cy="5" r="4" fill="var(--fill-0, white)" fill-opacity="0.4"/>
+</g>
+</svg>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bymac Pharmacon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=cta-ring-svg" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-grid">
+        <a class="brand" href="./index.html#inicio" aria-label="Bymac Pharmacon">
+          <img src="./assets/figma/logo-small.svg" alt="Bymac" />
+        </a>
+
+        <nav class="main-nav" aria-label="Navegação principal">
+          <a class="active" href="./index.html#inicio">Início</a>
+          <a href="./sobre.html">Sobre</a>
+          <a href="./produtos.html">Produtos</a>
+          <a href="./contato.html">Contato</a>
+        </nav>
+
+        <div class="header-tools">
+          <div class="currency-rate">
+            <span>Dólar Hoje</span>
+            <strong>R$ 5,20</strong>
+          </div>
+          <div class="language-selector">
+            <button class="language-button" type="button" aria-label="Selecionar idioma" aria-expanded="false">
+              <img src="./assets/figma/globe.svg" alt="" />
+              <span class="language-current">PT</span>
+            </button>
+            <div class="language-menu" role="menu">
+              <button type="button" data-lang="pt" role="menuitem">Português</button>
+              <button type="button" data-lang="es" role="menuitem">Español</button>
+              <button type="button" data-lang="en" role="menuitem">English</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-label="Produto em destaque">
+        <button class="hero-arrow hero-arrow-left" aria-label="Slide anterior">
+          <img src="./assets/figma/arrow-left.svg" alt="" />
+        </button>
+        <img class="hero-product" src="./assets/figma/hero.png" alt="Produto Tirzedral 15mg em destaque" />
+        <button class="hero-arrow hero-arrow-right" aria-label="Próximo slide">
+          <img src="./assets/figma/arrow-right.svg" alt="" />
+        </button>
+        <img class="slide-dots" src="./assets/figma/slide-dots.svg" alt="" />
+      </section>
+
+      <section class="section products-section" id="produtos">
+        <div class="section-heading left">
+          <p>Produtos</p>
+          <h1>Nosso Portfólio. Selecionado. Certificado. Eficaz.</h1>
+        </div>
+
+        <div class="products-grid">
+          <article class="product-card">
+            <div class="product-image">
+              <img src="./assets/figma/product-mostc.png" alt="MOSTc" />
+            </div>
+            <h2>MOSTc</h2>
+            <p class="price"><strong>$50,00</strong><span>/ R$260,00</span></p>
+            <a href="./produto-mostc.html">Ver produto</a>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="./assets/figma/product-tb500-bpc157.png" alt="TB-500 + BPC-157" />
+            </div>
+            <h2>TB-500 + BPC-157</h2>
+            <p class="price"><strong>$89,90</strong><span>/ R$467,48</span></p>
+            <a href="./produto-tb-500-bpc-157.html">Ver produto</a>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="./assets/figma/product-hgh-fragment.png" alt="HGH Fragment 176-191" />
+            </div>
+            <h2>HGH Fragment 176-191</h2>
+            <p class="price"><strong>$65,00</strong><span>/ R$338,00</span></p>
+            <a href="./produto-hgh-fragment-176-191.html">Ver produto</a>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img src="./assets/figma/product-klow.png" alt="KLOW" />
+            </div>
+            <h2>KLOW</h2>
+            <p class="price"><strong>$70,00</strong><span>/ R$364,00</span></p>
+            <a href="./produto-klow.html">Ver produto</a>
+          </article>
+        </div>
+
+        <div class="center-action">
+          <a class="button primary large" href="./produtos.html">Explorar Produtos</a>
+        </div>
+      </section>
+
+      <section class="section info-section">
+        <div class="section-heading center">
+          <p>Nossa Especialidade</p>
+          <h2>O Padrão Bymac de Qualidade</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="icon-pill"><img src="./assets/figma/help-circle.svg" alt="" /></span>
+            <h3>Farmácia com Propósito</h3>
+            <p>Na Bymac Pharmacon, cada produto é cuidadosamente selecionado por farmacêuticos especialistas. Trabalhamos apenas com fabricantes certificados e matérias-primas de procedência rastreável.</p>
+          </article>
+          <article class="feature">
+            <span class="icon-pill"><img src="./assets/figma/activity.svg" alt="" /></span>
+            <h3>Atendimento Especializado</h3>
+            <p>Nossa equipe de farmacêuticos está disponível para orientar a escolha ideal, oferecendo suporte personalizado para profissionais de saúde e consumidores exigentes.</p>
+          </article>
+          <article class="feature">
+            <span class="icon-pill"><img src="./assets/figma/target.svg" alt="" /></span>
+            <h3>Entrega Ágil e Segura</h3>
+            <p>Embalagens seguras, rastreamento em tempo real e entrega expressa para todo o Brasil. Porque sua saúde não pode esperar.</p>
+          </article>
+        </div>
+
+        <div class="wide-image">
+          <img src="./assets/figma/quality-medicine.png" alt="Frasco de medicamento sobre superfície cinza" />
+        </div>
+      </section>
+
+      <section class="section standards-section" id="sobre">
+        <div class="section-heading center">
+          <p>Nossa Empresa</p>
+          <h2>Construída na Excelência. Guiada pelo Cuidado.</h2>
+        </div>
+
+        <div class="about-row">
+          <div class="about-image">
+            <img src="./assets/figma/company-vials.png" alt="Frascos farmacêuticos em laboratório" />
+          </div>
+          <div class="about-copy">
+            <p>A Bymac Pharmacon nasceu da visão de transformar o acesso a produtos farmacêuticos premium no Brasil. Com um portfólio criteriosamente curado, unimos tecnologia, ciência e atendimento humano para oferecer o que há de melhor. Cada produto passa por rigorosa seleção antes de chegar até você.</p>
+            <a class="button primary compact" href="./sobre.html">Saiba mais</a>
+          </div>
+        </div>
+
+        <div class="feature-grid standards">
+          <article class="feature">
+            <span class="icon-pill"><img src="./assets/figma/microscope.svg" alt="" /></span>
+            <h3>Curadoria Especializada</h3>
+            <p>Cada produto do nosso portfólio é avaliado por farmacêuticos com critérios rigorosos de eficácia, segurança e procedência.</p>
+          </article>
+          <article class="feature">
+            <span class="icon-pill"><img src="./assets/figma/shield.svg" alt="" /></span>
+            <h3>Qualidade Certificada</h3>
+            <p>Trabalhamos exclusivamente com fornecedores certificados e aprovados pelos órgãos sanitários competentes.</p>
+          </article>
+          <article class="feature">
+            <span class="icon-pill"><img src="./assets/figma/badge-check.svg" alt="" /></span>
+            <h3>Integridade</h3>
+            <p>Transparência total em rótulos, composição e procedência. Você sabe exatamente o que está comprando.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-banner">
+        <div class="cta-inner">
+          <div class="cta-copy">
+            <h2>Quer explorar nosso portfólio completo e encontrar o produto ideal para a sua saúde?</h2>
+            <a class="button primary compact" href="./produtos.html">Explorar Produtos</a>
+          </div>
+          <div class="cta-art" aria-hidden="true">
+            <img class="cta-ring" src="./assets/figma/bymac-circle.svg" alt="" />
+            <img src="./assets/figma/cta-slimex.png" alt="" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contato">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2>Bymac Pharmacon</h2>
+          <p>Sua Farmácia Premium Online de Confiança</p>
+          <strong>Siga-nos nas redes sociais</strong>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><img src="./assets/figma/footer-instagram.svg" alt="" /></a>
+            <a href="#" aria-label="Facebook"><img src="./assets/figma/footer-facebook.svg" alt="" /></a>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navegação do rodapé">
+          <strong>Navegue</strong>
+          <a href="./index.html#inicio">Início</a>
+          <a href="./sobre.html">Sobre Nós</a>
+          <a href="./produtos.html">Produtos</a>
+          <a href="./contato.html">Contato</a>
+        </nav>
+      </div>
+
+      <div class="footer-logo" aria-label="Bymac Pharmacon">
+        <img class="footer-logo-full" src="./assets/figma/logo-word-full.svg" alt="" />
+      </div>
+
+      <div class="footer-bottom">
+        <p>© Bymac. Todos os direitos reservados.</p>
+        <div>
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Termos e Condições</a>
+        </div>
+      </div>
+    </footer>
+    <script src="./assets/js/exchange-rate.js"></script>
+    <script src="./assets/js/language-dropdown.js"></script>
+  </body>
+</html>
