@@ -35,15 +35,27 @@ const centerVisibleProduct = async (image) => {
     const renderedScale = Math.min(contentWidth / width, contentHeight / height);
     const visibleCenterX = (minX + maxX) / 2;
     const visibleCenterY = (minY + maxY) / 2;
-    const offsetX = (width / 2 - visibleCenterX) * renderedScale;
-    const offsetY = (height / 2 - visibleCenterY) * renderedScale;
+    const visibleWidth = Math.max(1, maxX - minX + 1) * renderedScale;
+    const visibleHeight = Math.max(1, maxY - minY + 1) * renderedScale;
+    const isThumbnail = Boolean(image.closest(".product-thumbs"));
+    const isRelatedCard = Boolean(image.closest(".product-image"));
+    const targetFill = isThumbnail ? 0.82 : isRelatedCard ? 0.82 : 0.82;
+    const scaleToFit = Math.min(
+      (contentWidth * targetFill) / visibleWidth,
+      (contentHeight * targetFill) / visibleHeight
+    );
+    const visualScale = Math.max(0.8, Math.min(3, scaleToFit));
+    const offsetX = (width / 2 - visibleCenterX) * renderedScale * visualScale;
+    const offsetY = (height / 2 - visibleCenterY) * renderedScale * visualScale;
 
     image.style.removeProperty("transform");
     image.style.setProperty("--visual-offset-x", `${offsetX.toFixed(2)}px`);
     image.style.setProperty("--visual-offset-y", `${offsetY.toFixed(2)}px`);
+    image.style.setProperty("--visual-scale", visualScale.toFixed(3));
   } catch (_) {
     image.style.removeProperty("--visual-offset-x");
     image.style.removeProperty("--visual-offset-y");
+    image.style.removeProperty("--visual-scale");
   }
 };
 

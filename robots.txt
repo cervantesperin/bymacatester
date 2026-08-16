@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /figma-hero-concepts.html
+Disallow: /tools/
+
+Sitemap: https://cervantesperin.github.io/bymacatester/sitemap.xml

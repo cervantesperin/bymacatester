@@ -1,47 +1,75 @@
 (function () {
-  const fallbackRate = "R$ 5,20";
-  const cacheKey = "bymacDollarRate";
+  const fallbackRate = 5.2;
+  const cacheKey = "bymacDollarRateNumeric";
   const cacheDateKey = "bymacDollarRateDate";
   const today = new Date().toISOString().slice(0, 10);
-  const sourceUrl = "https://mobile.comprasparaguai.com.br/";
-  const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(sourceUrl);
+  const brlFormatter = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+  const usdFormatter = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "USD" });
 
-  function setRate(value) {
-    const normalized = value && /^R\$\s?\d+,\d{2}$/.test(value.trim()) ? value.trim().replace("R$", "R$ ") : fallbackRate;
-    document.querySelectorAll(".currency-rate strong").forEach((node) => {
-      node.textContent = normalized;
+  function formatBcbDate(date) {
+    return `${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}-${date.getFullYear()}`;
+  }
+
+  function buildBcbUrl() {
+    const end = new Date();
+    const start = new Date(end);
+    start.setDate(start.getDate() - 7);
+    const params = new URLSearchParams({
+      "@dataInicial": `'${formatBcbDate(start)}'`,
+      "@dataFinalCotacao": `'${formatBcbDate(end)}'`,
+      "$top": "1",
+      "$orderby": "dataHoraCotacao desc",
+      "$format": "json",
+    });
+    return `https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?${params}`;
+  }
+
+  function normalizeRate(value) {
+    const parsed = Number(String(value).replace("R$", "").replace(",", ".").trim());
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : fallbackRate;
+  }
+
+  function updatePrices(rate) {
+    document.querySelectorAll("[data-usd-price]").forEach((price) => {
+      const usd = Number(price.dataset.usdPrice);
+      if (!Number.isFinite(usd)) return;
+      const usdNode = price.querySelector(".usd-price");
+      const brlNode = price.querySelector(".brl-price");
+      if (usdNode) usdNode.textContent = usdFormatter.format(usd);
+      if (brlNode) {
+        const prefix = price.classList.contains("detail-price") ? "" : "/ ";
+        brlNode.textContent = `${prefix}${brlFormatter.format(usd * rate)}`;
+      }
     });
   }
 
-  function extractRate(html) {
-    const direct = html.match(/class=["'][^"']*cotacao-real[^"']*["'][^>]*>\s*(R\$\s?\d+,\d{2})/i);
-    if (direct) return direct[1];
-    const loose = html.match(/R\$\s?\d+,\d{2}/);
-    return loose ? loose[0] : "";
+  function setRate(value) {
+    const rate = normalizeRate(value);
+    document.querySelectorAll(".currency-rate strong").forEach((node) => {
+      node.textContent = brlFormatter.format(rate);
+    });
+    updatePrices(rate);
   }
 
   async function readRate() {
     const cached = localStorage.getItem(cacheKey);
     const cachedDate = localStorage.getItem(cacheDateKey);
-    if (cached && cachedDate === today) return cached;
+    if (cached && cachedDate === today) return normalizeRate(cached);
 
-    const urls = [sourceUrl, proxyUrl];
-    for (const url of urls) {
-      try {
-        const response = await fetch(url, { cache: "no-store" });
-        if (!response.ok) continue;
-        const rate = extractRate(await response.text());
-        if (rate) {
-          localStorage.setItem(cacheKey, rate);
-          localStorage.setItem(cacheDateKey, today);
-          return rate;
-        }
-      } catch (error) {
-        // Try the next source.
+    try {
+      const response = await fetch(buildBcbUrl(), { cache: "no-store" });
+      if (response.ok) {
+        const data = await response.json();
+        const rate = normalizeRate(data.value?.[0]?.cotacaoVenda);
+        localStorage.setItem(cacheKey, String(rate));
+        localStorage.setItem(cacheDateKey, today);
+        return rate;
       }
+    } catch (_) {
+      // A cotação em cache ou a reserva abaixo mantém os preços disponíveis.
     }
 
-    return cached || fallbackRate;
+    return cached ? normalizeRate(cached) : fallbackRate;
   }
 
   setRate(localStorage.getItem(cacheKey) || fallbackRate);

@@ -1,0 +1,17 @@
+{
+  "name": "Bymac Pharmacon",
+  "short_name": "Bymac",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#31b436",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "./assets/figma/logo-small.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
