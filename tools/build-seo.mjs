@@ -81,7 +81,8 @@ for (const file of files) {
   }
 
   html = html.replace(/<script src="\.\/seo-runtime\.js[^>]*><\/script>\s*/g, '');
-  html = html.replace(/<\/body>/i, '    <script src="./seo-runtime.js?v=seo-20260816-1"></script>\n  </body>');
+  html = html.replace(/<script src="\.\/assets\/js\/mobile-menu\.js[^>]*><\/script>\s*/g, '');
+  html = html.replace(/<\/body>/i, '    <script src="./assets/js/mobile-menu.js?v=mobile-header-20260816-1"></script>\n    <script src="./seo-runtime.js?v=seo-20260816-1"></script>\n  </body>');
   if (!html.includes('rel="manifest"')) {
     html = html.replace(/(<link rel="stylesheet"[^>]*>)/i, '    <link rel="manifest" href="./manifest.webmanifest" />\n$1');
   }

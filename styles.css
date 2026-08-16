@@ -2798,6 +2798,12 @@ img {
     gap: 18px;
   }
 
+  /* Evita que headers antigos apareçam abertos antes da normalização pelo JS. */
+  .site-header-grid > .main-nav,
+  .site-header-grid > .header-tools {
+    display: none;
+  }
+
   .brand {
     width: auto;
   }
